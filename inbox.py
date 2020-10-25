@@ -35,4 +35,3 @@ def get_inbox():
 if __name__ == "__main__":
     my_inbox = get_inbox()
     print(my_inbox)
-# print(search_data)
