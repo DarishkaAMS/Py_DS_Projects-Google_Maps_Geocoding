@@ -17,12 +17,12 @@ def send(name, website=None, to_email=None, verbose=False):
     # send the message
     send_mail(text=msg, to_emails=[to_email], html=None)
 
-    # try:
-    #     send_mail(text=msg, to_emails=[to_email], html=None)
-    #     sent = True
-    # except:
-    #     sent = False
-    # return sent
+    try:
+        send_mail(text=msg, to_emails=[to_email], html=None)
+        sent = True
+    except:
+        sent = False
+    return sent
 
 
 if __name__ == "__main__":
