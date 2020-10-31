@@ -18,9 +18,8 @@ class Emailer():
     template_html = None
     template_name = None
 
-    def __init__(self, subject='', template_name=None, context={},
-                 template_html=None, to_emails=None, test_send=False):
-        if template_name == None and template_html == None:
+    def __init__(self, subject="", template_name=None, context={}, template_html=None, to_emails=None, test_send=False):
+        if template_name == None and template_name == None:
             raise Exception("You must set a template")
         assert isinstance(to_emails, list)
         self.to_emails = to_emails
@@ -43,20 +42,19 @@ class Emailer():
             txt_part = MIMEText(tmpl_str.render(), 'plain')
             print(txt_part)
             msg.attach(txt_part)
-
         if self.template_html != None:
             tmpl_str = Template(template_name=self.template_html, context=self.context)
             html_part = MIMEText(tmpl_str.render(), 'html')
             print(html_part)
             msg.attach(html_part)
-
         msg_str = msg.as_string()
         return msg_str
 
-    def send_mail(self):
+    def send_email(self):
         msg = self.format_msg()
+        # login to my smtp server
         did_send = False
-        if not test.test_send:
+        if not self.test_send:
             with smtplib.SMTP(host='smtp.gmail.com', port=587) as server:
                 server.ehlo()
                 server.starttls()
