@@ -1,0 +1,4 @@
+obj = Emailer(subject="Hello My World", context={"name":"DarishkaAMS"}, template_name="hello.txt",
+ to_emails=["d.nikolaienko@yahoo.co.uk"], test_send=True)
+
+
