@@ -27,4 +27,28 @@ table_class = '.imdb-scroll-table'
 # "a-section imdb-scroll-table mojo-gutter imdb-scroll-table-styles"
 r_table = r_html.find(table_class)
 
-print(r_table)
+# print(r_table)
+
+table_data = []
+header_names = []
+
+if len(r_table) == 1:
+    # print(r_table[0].text)
+    parsed_table = r_table[0]
+    rows = parsed_table.find('tr')
+    # print(rows)
+    header_row = rows[0]
+    header_columns = header_row.find('th')
+    header_names = [data.text for data in header_columns]
+
+    for row in rows[1:]:
+        # print(row.text)
+        columns = row.find('td')
+        row_data = []
+        for i, column in enumerate(columns):
+            # print(i, column.text, '\n\n')
+            row_data.append(column.text)
+        table_data.append(row_data)
+
+print(header_names)
+print(table_data)
