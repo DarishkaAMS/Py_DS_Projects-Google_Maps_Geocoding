@@ -4,4 +4,10 @@ url = "https://www.boxofficemojo.com/year/world/"
 
 # r = requests.get(url)
 # r.status_code -> 200
-# r.text -> get html
+# r.text -> get html text (kind inspect)
+
+from requests_html import HTML
+r_html = HTML(html=html_text) -> <HTML url='https://example.org/'>
+r_html.find('table') -> [<Element 'table' class=('a-bordered', 'a-horizontal-stripes', 'a-size-base', 'a-span12', 'mojo-body-t
+able', 'mojo-table-annotated')>]
+
