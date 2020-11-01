@@ -1,0 +1,7 @@
+import requests
+
+url = "https://www.boxofficemojo.com/year/world/"
+
+# r = requests.get(url)
+# r.status_code -> 200
+# r.text -> get html
