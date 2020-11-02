@@ -1,5 +1,6 @@
 import requests
 import pprint
+import pandas as pd
 api_key = "9db581b66af3875cd0f60398f7e45671"
 api_key_v4 = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZGI1ODFiNjZhZjM4NzVjZDBmNjAzOThmN2U0NTY3MSIsInN1YiI6IjVmOTc5ZDMyZDJmNWI1MDAzYTdlYjE2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H1mCVcN4474KHzCW6nLmGB9gNz073JdXw4T8pwuo9xk"
 
@@ -18,7 +19,7 @@ movie_id = 500
 api_version = 3
 api_base_url = f'https://api.themoviedb.org/{api_version}'
 endpoint_path = f'/movie/{movie_id}'
-endpoint = f'{api_base_url}{endpoint_path}?api_key={api_key}'
+endpoint = f'{api_base_url}{endpoint_path}?api_key={api_key}&page=1'
 # print(endpoint)
 # r = requests.get(endpoint) # json={"api_key": api_key})
 # print(r.status_code)
@@ -55,7 +56,22 @@ if r.status_code in range (200, 299):
         movie_ids = set()
         for result in results:
             _id = result['id']
-            print(result['title'], _id)
+            # print(result['title'], _id)
             movie_ids.add(_id)
         # print(list(movie_ids))
 
+output = 'movies.csv'
+movie_data = []
+for movie_id in movie_ids:
+    api_version = 3
+    api_base_url = f'https://api.themoviedb.org/{api_version}'
+    endpoint_path = f'/movie/{movie_id}'
+    endpoint = f'{api_base_url}{endpoint_path}?api_key={api_key}'
+    r = requests.get(endpoint)
+    if r.status_code in range (200, 299):
+        data = r.json()
+        movie_data.append(data)
+
+df = pd.DataFrame(movie_data)
+print(df.head())
+df.to_csv(output, index=False)
