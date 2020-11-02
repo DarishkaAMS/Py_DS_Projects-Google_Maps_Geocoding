@@ -1,2 +1,4 @@
 #Generating the API key
 https://www.themoviedb.org/settings/api
+
+https://developers.themoviedb.org/4/getting-started/authorization
