@@ -41,8 +41,9 @@ endpoint = f'{api_base_url}{endpoint_path}' # ?api_key={api_key}'
 
 api_base_url = f'https://api.themoviedb.org/{api_version}'
 endpoint_path = f'/search/movie'
+search_query = 'The Matrix'
 endpoint = f'{api_base_url}{endpoint_path}?api_key={api_key}&' \
-           f'query=Endgame'
+           f'query={search_query}'
 pprint.pprint(endpoint)
 r = requests.get(endpoint)
 pprint.pprint(r.json())

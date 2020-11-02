@@ -2,3 +2,9 @@
 https://www.themoviedb.org/settings/api
 
 https://developers.themoviedb.org/4/getting-started/authorization
+
+>>> data = r.json()
+>>> data.keys()
+dict_keys(['page', 'total_results', 'total_pages', 'results'])
+>>> type(data['results'])
+<class 'list'>
