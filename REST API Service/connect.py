@@ -15,6 +15,8 @@ movie_id = 500
 api_version = 3
 api_base_url = f'https://api.themoviedb.org/{api_version}'
 endpoint_path = f'/movie/{movie_id}'
-endpoint = f'{api_base_url}{endpoint_path}'
-r = requests.get(endpoint)
+endpoint = f'{api_base_url}{endpoint_path}?api_key={api_key}'
+print(endpoint)
+r = requests.get(endpoint) # json={"api_key": api_key})
 print(r.status_code)
+print(r.text)
