@@ -8,3 +8,5 @@ https://developers.themoviedb.org/4/getting-started/authorization
 dict_keys(['page', 'total_results', 'total_pages', 'results'])
 >>> type(data['results'])
 <class 'list'>
+results = data['results']
+results[0].keys()

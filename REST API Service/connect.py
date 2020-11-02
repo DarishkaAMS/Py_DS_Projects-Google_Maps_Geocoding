@@ -44,6 +44,18 @@ endpoint_path = f'/search/movie'
 search_query = 'The Matrix'
 endpoint = f'{api_base_url}{endpoint_path}?api_key={api_key}&' \
            f'query={search_query}'
-pprint.pprint(endpoint)
+# pprint.pprint(endpoint)
 r = requests.get(endpoint)
-pprint.pprint(r.json())
+# pprint.pprint(r.json())
+if r.status_code in range (200, 299):
+    data = r.json()
+    results = data['results']
+    if len(results) > 0:
+        # print(results[0].keys())
+        movie_ids = set()
+        for result in results:
+            _id = result['id']
+            print(result['title'], _id)
+            movie_ids.add(_id)
+        # print(list(movie_ids))
+
