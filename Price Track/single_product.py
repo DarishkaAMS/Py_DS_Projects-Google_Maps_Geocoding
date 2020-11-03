@@ -1,0 +1,1 @@
+url = 'https://www.amazon.com/Widow-Clicquot-Story-Champagne-Empire/dp/0061288586/ref=pd_sbs_14_1/141-7038335-5635905?_encoding=UTF8&pd_rd_i=0061288586&pd_rd_r=a2e77631-8a30-430a-8474-877a5ffaa944&pd_rd_w=QnAzv&pd_rd_wg=myv0z&pf_rd_p=ff9b5089-1414-4e8f-9675-3397e98bf276&pf_rd_r=ZWEA78VK210G2F2P541D&psc=1&refRID=ZWEA78VK210G2F2P541D'

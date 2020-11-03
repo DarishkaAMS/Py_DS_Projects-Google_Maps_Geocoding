@@ -1,0 +1,4 @@
+Price Tracking & Monitoring on Amazon Python
+pip install jupyter pandas requests requests-html selenium
+pip install jupyterlab
+jupyter notebook
