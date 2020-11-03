@@ -1,1 +1,12 @@
-url = 'https://www.amazon.com/Widow-Clicquot-Story-Champagne-Empire/dp/0061288586/ref=pd_sbs_14_1/141-7038335-5635905?_encoding=UTF8&pd_rd_i=0061288586&pd_rd_r=a2e77631-8a30-430a-8474-877a5ffaa944&pd_rd_w=QnAzv&pd_rd_wg=myv0z&pf_rd_p=ff9b5089-1414-4e8f-9675-3397e98bf276&pf_rd_r=ZWEA78VK210G2F2P541D&psc=1&refRID=ZWEA78VK210G2F2P541D'
+import requests
+from requests_html import HTML
+
+
+url = 'https://www.amazon.co.uk/Mo%C3%ABt-Chandon-Ros%C3%A9-Imp%C3%A9rial-Gift/dp/B008U7SWXC/ref=redir_mobile_desktop?ie=UTF8&aaxitk=vEani3XHgUute4jc1LufSA&hsa_cr_id=3093126030502&pd_rd_r=0e2e200a-ff2e-48da-9cb6-0f60ac493dc5&pd_rd_w=LaWGK&pd_rd_wg=jSDk6&ref_=sbx_be_s_sparkle_mcd_asin_1_img'
+title_lookup = '#productTitle'
+price_lookup = '#unqualifiedBuyBox'
+
+r = requests.get(url)
+html_str = r.text
+
+print(html_str)
