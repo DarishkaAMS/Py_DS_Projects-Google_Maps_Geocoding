@@ -21,7 +21,7 @@ search_el = browser.find_element_by_name('q')
 # search_el = browser.find_element_by_css_selector('h1')
 # print(search_el)
 
-search_el.send_keys('I love you')
+search_el.send_keys('avril lavigne falling fast')
 
 """
 <input type='submit'/>
@@ -34,3 +34,5 @@ search_el.send_keys('I love you')
 
 submit_btn_el = browser.find_element_by_css_selector('input[type="submit"]')
 print(submit_btn_el.get_attribute('name'))
+time.sleep(2)
+submit_btn_el.click()
