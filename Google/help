@@ -5,3 +5,4 @@ python
 >>> browser.get('https://github.com/DarishkaAMS')
 Please see https://sites.google.com/a/chromium.org/chromedriver/home
 Google Chrome Version 86.0.4240.183 (Official Build) (64-bit)
+>>> dir(browser)
