@@ -79,6 +79,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMG_DIR = os.path.join(BASE_DIR, "INSTA images")
 os.makedirs(IMG_DIR, exist_ok=True)
 
+# Python Image Library
+
 
 def scrape_and_save(elements):
     for el in elements:
@@ -96,7 +98,7 @@ def scrape_and_save(elements):
             except:
                 continue
             with open(filepath, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=8192):
+                for chunk in r.iter_content(chunk_size=8192): # To configure the size
                     if chunk:
                         f.write(chunk)
 
