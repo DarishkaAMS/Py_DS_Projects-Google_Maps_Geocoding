@@ -2,9 +2,13 @@
 #
 # my_password = getpass.getpass('What is your password?\n')
 # print(my_password)
+from urllib.parse import urlparse
+import os
+import time
+import requests
 from conf import INSTA_USERNAME, INSTA_PASSWORD
 from selenium import webdriver
-import time
+
 
 browser = webdriver.Chrome()
 url = 'https://www.instagram.com'
@@ -69,8 +73,33 @@ if post_link_el != None:
     browser.get(post_href)
 
 
-video_els = browser.find_elements_by_xpath('//video')
-images_els = browser.find_elements_by_xpath('//img')
+video_els = browser.find_elements_by_xpath("//video")
+images_els = browser.find_elements_by_xpath("//img")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMG_DIR = os.path.join(BASE_DIR, "INSTA images")
+os.makedirs(IMG_DIR, exist_ok=True)
 
-for img in images_els:
-    print(img.get_attribute('src'))
+
+def scrape_and_save(elements):
+    for el in elements:
+        # print(img.get_attribute('src'))
+        url = el.get_attribute('src')
+        base_url = urlparse(url).path
+        # print(base_url)
+        filename = os.path.basename(base_url)
+        filepath = os.path.join(IMG_DIR, filename)
+        if os.path.exists(filepath):
+            continue
+        with requests.get(url, stream=True) as r:
+            try:
+                r.raise_for_status()
+            except:
+                continue
+            with open(filepath, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+
+
+scrape_and_save(video_els)
+scrape_and_save(images_els)
