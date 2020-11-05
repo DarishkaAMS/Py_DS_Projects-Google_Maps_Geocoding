@@ -1,3 +1,5 @@
 
 INSTA_USERNAME = 'honeydummyams'
-INSTA_PASSWORD = ''
+INSTA_PASSWORD = '!6T500lJF0knioK9'
+
+
