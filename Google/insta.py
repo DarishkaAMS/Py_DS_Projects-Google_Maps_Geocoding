@@ -103,5 +103,26 @@ def scrape_and_save(elements):
                         f.write(chunk)
 
 
-scrape_and_save(video_els)
-scrape_and_save(images_els)
+# scrape_and_save(video_els)
+# scrape_and_save(images_els)
+#
+"""
+<textarea aria-label="Add a comment…" placeholder="Add a comment…" 
+class="Ypffh" autocomplete="off" autocorrect="off"></textarea>
+"""
+
+
+def automate_comment(browser, content="Magnifique!!!"):
+    time.sleep(3)
+    comment_xpath_str = "//textarea[contains(@placeholder, 'Add a comment')]"
+    comment_el = browser.find_element_by_xpath(comment_xpath_str)
+    comment_el.send_keys(content)
+    submit_btns_xpath = "button[type='submit']"
+    submit_btns_els = browser.find_elements_by_css_selector(submit_btns_xpath)
+    time.sleep(2)
+    for btn in submit_btns_els:
+        try:
+            btn.click()
+        except:
+            pass
+
