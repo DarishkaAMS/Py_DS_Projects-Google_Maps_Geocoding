@@ -46,7 +46,24 @@ def click_to_follow(browser):
         except:
             pass
 
-new_user_url = 'https://www.instagram.com/ted/'
-browser.get(new_user_url)
-click_to_follow(browser)
+#
+# new_user_url = 'https://www.instagram.com/ted/'
+# browser.get(new_user_url)
+# click_to_follow(browser)
 
+
+time.sleep(2)
+the_DarishkaAMS_url = 'https://www.instagram.com/darishkaams/?hl=uk'
+browser.get(the_DarishkaAMS_url)
+
+post_url_pattern = 'https://www.instagram.com/p/<post-slug-id>'
+post_xpath_str = '//a[contains(@href, "/p/")]'
+post_links = browser.find_elements_by_xpath(post_xpath_str)
+post_link_el = None
+
+if len(post_links) > 0:
+    post_link_el = post_links[0]
+
+if post_link_el != None:
+    post_href = post_link_el.get_attribute("href")
+    browser.get(post_href)
