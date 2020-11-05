@@ -53,8 +53,8 @@ def click_to_follow(browser):
 
 
 time.sleep(2)
-the_DarishkaAMS_url = 'https://www.instagram.com/darishkaams/?hl=uk'
-browser.get(the_DarishkaAMS_url)
+the_VCP_url = 'https://www.instagram.com/veuveclicquot/'
+browser.get(the_VCP_url)
 
 post_url_pattern = 'https://www.instagram.com/p/<post-slug-id>'
 post_xpath_str = '//a[contains(@href, "/p/")]'
@@ -67,3 +67,10 @@ if len(post_links) > 0:
 if post_link_el != None:
     post_href = post_link_el.get_attribute("href")
     browser.get(post_href)
+
+
+video_els = browser.find_elements_by_xpath('//video')
+images_els = browser.find_elements_by_xpath('//img')
+
+for img in images_els:
+    print(img.get_attribute('src'))
