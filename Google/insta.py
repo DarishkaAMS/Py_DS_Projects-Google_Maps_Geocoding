@@ -126,3 +126,40 @@ def automate_comment(browser, content="Magnifique!!!"):
         except:
             pass
 
+
+# automate_comment(browser, content="Magnifique!!!")
+
+"""
+Like  = <svg aria-label="Like" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24">
+<path d="..."</path></svg>
+"""
+
+
+def automate_likes(browser):
+    like_heart_svg_xpath = "//*[contains(@aria-label, 'Like')]"
+    all_like_hearts_els = browser.find_elements_by_xpath(like_heart_svg_xpath)
+
+    max_heart_height = -1
+    for heart_el in all_like_hearts_els:
+        h = heart_el.get_attribute("height")
+        current_h = int(h)
+        if current_h > max_heart_height:
+            max_heart_height = current_h
+
+    all_like_hearts_els = browser.find_elements_by_xpath(like_heart_svg_xpath)
+    # print(max_heart_height, "max_heart_height")
+    for heart_el in all_like_hearts_els:
+        h = heart_el.get_attribute("height")
+        # print(h)
+        if h == max_heart_height or h == f'{max_heart_height}':
+            parent_button = heart_el.find_element_by_xpath('..') #go to the parent button
+            print(parent_button)
+            time.sleep(2)
+            try:
+                parent_button.click()
+            except:
+                pass
+
+
+automate_likes(browser)
+automate_comment(browser, content="Magnifique!!!")
