@@ -29,3 +29,4 @@
 [1106/061003.636:ERROR:exception_snapshot_win.cc(99)] thread ID 6936 not found in process
 [1106/061003.807:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
 [1106/061003.807:ERROR:exception_snapshot_win.cc(99)] thread ID 6156 not found in process
+[1106/062038.435:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
