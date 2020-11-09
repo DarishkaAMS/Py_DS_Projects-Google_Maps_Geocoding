@@ -7,4 +7,5 @@ Google - Scrape & Automate behind Password Protected Apps with Selenium & Python
 Price Track - Price Tracking & Monitoring on Amazon (IN PROGRESS)
 REST API Service - Using a REST API Service
 Web Scraping - Web Scraping Box Office $$ Numbers
+Google Maps - Using Google Maps Geocoding and Places API
 
