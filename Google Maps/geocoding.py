@@ -1,6 +1,6 @@
-import requests
+# import requests
 from urllib.parse import urlencode
-
+from urllib.parse import urlparse, parse_qsl
 
 # https://console.cloud.google.com/apis/credentials?authuser=1&project=cfe-project-295104
 api_key = "AIzaSyD31cVxW6IO9JOsvia_Eu96lRSKuFRzzxE"
@@ -33,5 +33,15 @@ def extract_lat_lng(address_or_postalcode, data_type = 'json'):
         pass
     return latlng.get("lat"), latlng.get("lng")
 
+# extract_lat_len("1600 Amphitheatre Parkway, Mountain+View, CA")
 
-extract_lat_len("1600 Amphitheatre Parkway, Mountain+View, CA")
+
+to_parse = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,' \
+           '+CA&key=YOUR_API_KEY '
+urlparse(to_parse)
+parsed_url = urlparse(to_parse)
+query_str = parsed_url.query
+query_tuple = parse_qsl(query_str)
+query_dict = dict(query_tuple)
+
+endpoint = f'{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}'
