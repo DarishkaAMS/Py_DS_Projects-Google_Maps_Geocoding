@@ -1,4 +1,4 @@
-# import requests
+import requests
 from urllib.parse import urlencode
 from urllib.parse import urlparse, parse_qsl
 
@@ -45,3 +45,26 @@ query_tuple = parse_qsl(query_str)
 query_dict = dict(query_tuple)
 
 endpoint = f'{parsed_url.scheme}://{parsed_url.netloc}{parsed_url.path}'
+
+lat, lng = 37.42230960000001, -122.0846244
+base_endpoint_places = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+params = {
+    'key': api_key,
+    'input': 'Italian Food',
+    'input_type': 'textquery',
+    'fields': 'address_component,name,geometry, permanently_closed'
+}
+locationbias = f'point:{lat},{lng}'
+use_circular = False
+if use_circular:
+    radius = 1000
+    locationbias = f'circle:{radius}@{lat},{lng}'
+params['locationbias']: locationbias
+
+params_encoded = urlencode(params)
+places_endpoint = f'{base_endpoint_places}?{params_encoded}'
+# print(places_endpoint)
+
+r = requests.get(places_endpoint)
+print(r.status_code)
+r.json()
